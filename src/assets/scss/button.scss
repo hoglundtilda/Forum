@@ -1,0 +1,33 @@
+@import "./variables.scss";
+@import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
+
+.btn {
+  padding: 15px;
+  background: $blue;
+  border: none;
+  font-family: "Ubuntu";
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.cta {
+  background: $white;
+  border: none;
+  border-radius: 15px;
+  padding: 14px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "Ubuntu";
+}
+
+.user-menu {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: $white;
+  text-transform: uppercase;
+}
