@@ -30,15 +30,36 @@ export default {
         username: this.username,
         pwd: this.pwd
       };
-      const url = "http://localhost:3005/auth";
+      const url = "http://localhost:3005/auth/login";
       fetch(url, {
         method: "POST",
         body: JSON.stringify(input),
         headers: { "Content-Type": "application/json" }
       })
-        .then(response => response)
+        .then(response => response.json())
         .then(data => {
           console.log(data);
+          if (data.success) {
+            this.redirect(data);
+          }
+        })
+        .catch(error => {
+          console.error("Error:", error);
+        });
+    },
+    redirect(data) {
+      const url = "http://localhost:3005/auth/user";
+      fetch(url, {
+        method: "GET",
+        headers: { "Content-Type": "application/json", token: data.token }
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            console.log(data);
+
+            this.$router.push("/home", data);
+          }
         })
         .catch(error => {
           console.error("Error:", error);

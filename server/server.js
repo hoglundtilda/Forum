@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const users = require("./routes/users");
-const auth = require("./routes/auth");
+const login = require("./routes/login");
 
 const app = express();
 const db = mongoose.connection;
@@ -14,7 +14,7 @@ app.use(express.static("../dist"));
 // Register
 app.use("/users", users);
 //Login
-app.use("/auth", auth);
+app.use("/auth", login);
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 db.on("error", error => console.error(error));
