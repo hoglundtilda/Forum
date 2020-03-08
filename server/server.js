@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const users = require("./routes/users");
 const login = require("./routes/login");
+const admin = require("./routes/admin");
 
 const app = express();
 const db = mongoose.connection;
@@ -15,6 +16,8 @@ app.use(express.static("../dist"));
 app.use("/users", users);
 //Login
 app.use("/auth", login);
+// admin controllers
+app.use("/admin", admin);
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 db.on("error", error => console.error(error));

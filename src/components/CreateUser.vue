@@ -138,7 +138,7 @@ export default {
   }
 
   .switch-form {
-    color: $blue;
+    color: $cyan;
     opacity: 0.8;
     cursor: pointer;
     font-weight: 600;

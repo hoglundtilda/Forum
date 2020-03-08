@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 const categorySchema = new mongoose.Schema({
-  id: {
-    type: Number,
-    required: true
-  },
   title: {
     type: String,
     required: true
@@ -13,8 +9,7 @@ const categorySchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  img: URL,
-  required: true
+  img: String
 });
 
 module.exports = mongoose.model("Category", categorySchema);

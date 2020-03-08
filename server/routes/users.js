@@ -1,13 +1,13 @@
 const express = require("express");
-const router = express.Router();
 const User = require("../models/user");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
+const router = express.Router();
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-// Get all user
+// Get all users
 router.get("/", async (req, res) => {
   try {
     const users = await User.find();
@@ -45,24 +45,8 @@ router.post("/register", (req, res) => {
       user.save();
     })
     .catch(error => {
-      console.log("Error saving user: ");
-      console.log(error);
+      console.log("Error saving user:", error);
     });
-
-  /* const user = new User({
-    email: req.body.email,
-    username: req.body.username,
-    pwd: req.body.pwd,
-    regDate: req.body.regDate
-  }); */
-
-  /* try {
-    const newUser = await user.save();
-    res.status(201).json(newUser);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-  */
 });
 
 // Update one user

@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Start from "../views/Start.vue";
 import Home from "../views/Home.vue";
+import Admin from "../views/Admin.vue";
 
 Vue.use(VueRouter);
 
@@ -11,7 +12,8 @@ const routes = [
     name: "Start",
     component: Start
   },
-  { path: "/home", name: "Home", component: Home }
+  { path: "/home", name: "Home", component: Home },
+  { path: "/admin", name: "Admin", component: Admin }
 ];
 
 const router = new VueRouter({

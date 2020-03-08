@@ -57,7 +57,6 @@ export default {
         .then(data => {
           if (data.success) {
             console.log(data);
-
             this.$router.push("/home", data);
           }
         })
@@ -86,7 +85,7 @@ export default {
   position: fixed;
 
   .switch-form {
-    color: $blue;
+    color: $cyan;
     opacity: 0.8;
     cursor: pointer;
     font-weight: 600;

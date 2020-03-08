@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
-
 const topicSchema = new mongoose.Schema({
   id: {
     type: Number,
     required: true
   },
   category_id: {
-    type: Number,
+    id: mongoose.Schema.Types.ObjectId,
+    ref: "Category",
     required: true
   },
   title: {

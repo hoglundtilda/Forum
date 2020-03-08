@@ -24,13 +24,13 @@
         <p class="username">John Doe</p>
       </section>
     </header>
-    <section class="highlighted-area">
+    <!--   <section class="highlighted-area">
       <div>
         <h2>Who are you?</h2>
         <p>Introduce yourself with a post</p>
       </div>
       <button class="cta">New Post</button>
-    </section>
+    </section>-->
   </div>
 </template>
 
@@ -44,16 +44,14 @@
   display: flex;
   flex-direction: column;
   align-content: center;
-
-  height: 100%;
+  width: 100%;
 
   .header {
     display: grid;
     align-items: center;
-    width: 80vw;
+    width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    height: 5rem;
-    margin-bottom: 1rem;
+    height: 6rem;
 
     .title {
       grid-column: 1/1;
@@ -85,7 +83,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      padding: 0 10%;
+      margin-right: 2rem;
       letter-spacing: 2px;
 
       .user-menu {
