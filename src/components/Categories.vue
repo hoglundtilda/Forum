@@ -2,7 +2,7 @@
   <div class="categories">
     <h3>Categories</h3>
     <li
-      @click="category(index)"
+      @click="category(category.id)"
       v-for="(category, index) in categories"
       :key="index"
       class="category-title"
@@ -16,35 +16,23 @@
 <script>
 export default {
   data: () => {
-    return {
-      categories: 0
-    };
+    return {};
+  },
+  computed: {
+    categories() {
+      console.log(this.$store.state.getCategories.categories);
+      return this.$store.state.getCategories.categories;
+    }
   },
   methods: {
     categoryPanel() {
       this.$router.push("/Admin");
     },
-    category(index) {
-      this.$emit("category", index);
+    category(id) {
+      this.$store.dispatch("categoryTopics", id);
     }
   },
-  mounted() {
-    const url = "http://localhost:3005/admin/categories";
-    fetch(url, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" }
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data) {
-          this.categories = data;
-          console.log(this.categories);
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-      });
-  }
+  mounted() {}
 };
 </script>
 

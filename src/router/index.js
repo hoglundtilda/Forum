@@ -12,14 +12,36 @@ const routes = [
     name: "Start",
     component: Start
   },
-  { path: "/home", name: "Home", component: Home },
-  { path: "/admin", name: "Admin", component: Admin }
+  {
+    path: "/home",
+    name: "Home",
+    meta: { requiresAuth: true },
+    component: Home
+  },
+  {
+    path: "/admin",
+    name: "Admin",
+    meta: { requiresAuth: true },
+    component: Admin
+  }
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
+    if (window.localStorage.getItem("jwt")) {
+      next();
+    } else {
+      next({ name: "login" });
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;

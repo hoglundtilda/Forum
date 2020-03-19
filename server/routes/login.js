@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const randtoken = require("rand-token");
 const auth = require("../middleware/auth");
 
 const router = express.Router();
@@ -20,7 +21,7 @@ const getUser = async username => {
     .exec();
   return userDoc;
 };
-
+const refreshTokens = {};
 router.post("/login", (req, res) => {
   const username = req.body.username;
   const pwd = req.body.pwd;
@@ -30,8 +31,14 @@ router.post("/login", (req, res) => {
       if (!samePwd) {
         res.status(403);
       } else {
+        const refreshToken = randtoken.uid(256);
+        refreshTokens[refreshToken] = username;
         jwt.sign({ user }, "secretkey", (err, token) => {
-          res.json({ success: true, token });
+          res.json({
+            success: true,
+            token,
+            refreshToken
+          });
         });
       }
     })

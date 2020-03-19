@@ -24,45 +24,26 @@ export default {
       pwd: ""
     };
   },
+  computed: {
+    authentication() {
+      return this.$store.state.checkAuthenticate.userToken;
+    }
+  },
+  watch: {
+    authentication() {
+      this.userToken = this.authentication;
+
+      this.$router.push("/home");
+      this.$store.dispatch("fetchCategories");
+    }
+  },
   methods: {
     logIn() {
       const input = {
         username: this.username,
         pwd: this.pwd
       };
-      const url = "http://localhost:3005/auth/login";
-      fetch(url, {
-        method: "POST",
-        body: JSON.stringify(input),
-        headers: { "Content-Type": "application/json" }
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          if (data.success) {
-            this.redirect(data);
-          }
-        })
-        .catch(error => {
-          console.error("Error:", error);
-        });
-    },
-    redirect(data) {
-      const url = "http://localhost:3005/auth/user";
-      fetch(url, {
-        method: "GET",
-        headers: { "Content-Type": "application/json", token: data.token }
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            console.log(data);
-            this.$router.push("/home", data);
-          }
-        })
-        .catch(error => {
-          console.error("Error:", error);
-        });
+      this.$store.dispatch("authenticateUser", input);
     },
     signUp() {
       this.$emit("signUp", event);

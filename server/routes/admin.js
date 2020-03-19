@@ -10,7 +10,6 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.get("/categories", async (req, res) => {
   try {
     const categories = await Category.find();
-    console.log(categories);
 
     res.json(categories);
   } catch (err) {
@@ -18,10 +17,7 @@ router.get("/categories", async (req, res) => {
   }
 });
 
-/* // Get category
-router.get("/:id", (req, res) => {}); */
-
-// Register User
+// Add new category
 router.post("/category", (req, res) => {
   const title = req.body.title;
   const description = req.body.description;

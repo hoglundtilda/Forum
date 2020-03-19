@@ -18,17 +18,16 @@ router.get("/", async (req, res) => {
 });
 
 // Get one user
-router.get("/:id", (req, res) => {});
+// router.get("/:id", (req, res) => {});
 
 // Register User
 const BCRYPT_SALT_ROUNDS = 12;
-router.post("/register", (req, res) => {
+router.post("/register", req => {
   const email = req.body.email;
   const username = req.body.username;
   const pwd = req.body.pwd;
   const regDate = req.body.regDate;
 
-  // Hashing PW before saving in DB
   bcrypt
     .hash(pwd, BCRYPT_SALT_ROUNDS)
     .then(hashedPwd => {
@@ -49,10 +48,10 @@ router.post("/register", (req, res) => {
     });
 });
 
-// Update one user
+/* // Update one user
 router.patch("/:id", (req, res) => {});
 
 // Delete one user
-router.delete("/:id", (req, res) => {});
+router.delete("/:id", (req, res) => {}); */
 
 module.exports = router;
