@@ -9,18 +9,19 @@ const auth = require("../middleware/auth");
 
 const router = express.Router();
 const db = mongoose.connection;
-const User = db.usersSchema;
+const userSchema = db.usersSchema;
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 const getUser = async username => {
   const userDoc = await mongoose
-    .model("User", User)
+    .model("User", userSchema)
     .findOne({ username: username })
     .exec();
   return userDoc;
 };
+
 const refreshTokens = {};
 router.post("/login", (req, res) => {
   const username = req.body.username;

@@ -9,7 +9,7 @@ const categorySchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  img: String
+  topics: [{ type: mongoose.Schema.Types.ObjectId, ref: "Topic" }]
 });
 
 module.exports = mongoose.model("Category", categorySchema);

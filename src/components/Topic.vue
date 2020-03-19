@@ -18,6 +18,19 @@
   </div>
 </template>
 
+<script>
+export default {
+  data: () => {
+    return {};
+  },
+  computed: {
+    topic() {
+      return this.$store.state.getTopic.topic;
+    }
+  }
+};
+</script>
+
 <style lang="scss" scoped>
 @import "../assets/scss/variables.scss";
 @import "../assets/scss/textStyles";

@@ -1,20 +1,20 @@
 const mongoose = require("mongoose");
+
 const topicSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-    required: true
-  },
   category_id: {
-    id: mongoose.Schema.Types.ObjectId,
-    ref: "Category",
+    type: String,
     required: true
   },
   title: {
     type: String,
     required: true
   },
+  description: {
+    type: String,
+    required: true
+  },
   user_id: {
-    type: Number,
+    type: String,
     required: true
   },
   created_at: {
