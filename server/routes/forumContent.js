@@ -1,11 +1,13 @@
 const express = require("express");
 const Category = require("../models/category");
+// const Topic = require("../models/topic");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const router = express.Router();
 const db = mongoose.connection;
 const categorySchema = db.usersSchema;
+const topicSchema = db.topicSchema;
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +22,7 @@ router.get("/getCategories", async (req, res) => {
   }
 });
 
-const getCategoryTopics = async category_id => {
+const getCategoryTopics = async (category_id) => {
   const category = await mongoose
     .model("Category", categorySchema)
     .findOne({ _id: category_id })
@@ -34,18 +36,30 @@ router.post("/categoryTopics", (req, res) => {
   const category_id = req.body.id;
   console.log(category_id);
   getCategoryTopics(category_id)
-    .then(category => {
+    .then((category) => {
       if (!category) {
         res.status(403);
       } else {
         res.json({
-          category
+          category,
         });
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.log("Error:  ", error);
     });
+});
+
+router.get("/getPostsByCategory", async (req, res) => {
+  const category_id = req.body.id;
+
+  const topic = await mongoose
+    .model("Topic", topicSchema)
+    .find({ category_id: category_id })
+    .exec();
+
+  console.log(topic);
+  res.json(topic);
 });
 
 module.exports = router;

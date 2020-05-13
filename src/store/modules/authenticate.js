@@ -5,7 +5,7 @@ const authenticate = {
       console.log(data);
       localStorage.setItem("user_id", data);
       state.user_id = data;
-    }
+    },
   },
   actions: {
     async authenticateUser(ctx, credentials) {
@@ -13,15 +13,15 @@ const authenticate = {
       fetch(url, {
         method: "POST",
         body: JSON.stringify(credentials),
-        headers: { "Content-Type": "application/json" }
+        headers: { "Content-Type": "application/json" },
       })
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           if (data.success) {
             this.dispatch("redirect", data);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.error("Error:", error);
         });
     },
@@ -29,21 +29,21 @@ const authenticate = {
       const url = "http://localhost:3005/auth/user";
       fetch(url, {
         method: "GET",
-        headers: { "Content-Type": "application/json", token: data.token }
+        headers: { "Content-Type": "application/json", token: data.token },
       })
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           if (data.success) {
             console.log(data);
             ctx.commit("loginUser", data.user._id);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.error("Error:", error);
         });
-    }
+    },
   },
-  modules: {}
+  modules: {},
 };
 
 export default authenticate;
