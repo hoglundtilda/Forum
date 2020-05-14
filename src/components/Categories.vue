@@ -27,8 +27,9 @@ export default {
     categoryPanel() {
       this.$router.push("/Admin");
     },
-    fetchCategory(id) {
-      const category_id = { id: id };
+    fetchCategory(category_id) {
+      console.log(category_id);
+      //const category_id = { id: id };
       this.$store.dispatch("fetchCategoryTopics", category_id);
     }
   }

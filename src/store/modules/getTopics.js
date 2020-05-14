@@ -7,29 +7,29 @@ const topics = {
 
     renderTopics(state, data) {
       state.category = data;
-    }
+    },
   },
   actions: {
-    async fetchCategoryTopics(ctx, categoryId) {
+    async fetchCategoryTopics(ctx, category_id) {
       ctx.commit("clearState");
-      const url = "http://localhost:3005/forumContent/categoryTopics";
+      const url = "http://localhost:3005/forumContent/getTopicsByCategory";
       fetch(url, {
-        method: "POST",
-        body: JSON.stringify(categoryId),
-        headers: { "Content-Type": "application/json" }
+        method: "GET",
+        headers: { "Content-Type": "application/json", id: category_id },
       })
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           if (data) {
+            console.log(data);
             ctx.commit("renderTopics", data.category);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.error("Error:", error);
         });
-    }
+    },
   },
-  modules: {}
+  modules: {},
 };
 
 export default topics;

@@ -50,9 +50,9 @@ router.post("/categoryTopics", (req, res) => {
     });
 });
 
-router.get("/getPostsByCategory", async (req, res) => {
-  const category_id = req.body.id;
-
+router.get("/getTopicsByCategory", async (req, res) => {
+  const category_id = req.headers.id;
+  console.log(req.headers);
   const topic = await mongoose
     .model("Topic", topicSchema)
     .find({ category_id: category_id })

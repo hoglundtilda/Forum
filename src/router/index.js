@@ -10,26 +10,26 @@ const routes = [
   {
     path: "/",
     name: "Start",
-    component: Start
+    component: Start,
   },
   {
     path: "/home",
     name: "Home",
     meta: { requiresAuth: true },
-    component: Home
+    component: Home,
   },
   {
     path: "/admin",
     name: "Admin",
     meta: { requiresAuth: true },
-    component: Admin
-  }
+    component: Admin,
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 router.beforeEach((to, from, next) => {
@@ -37,7 +37,7 @@ router.beforeEach((to, from, next) => {
     if (localStorage.getItem("user_id")) {
       next();
     } else {
-      next({ name: "login" });
+      next({ name: "Start" });
     }
   } else {
     next();
