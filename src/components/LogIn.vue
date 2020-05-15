@@ -26,13 +26,11 @@ export default {
   },
   computed: {
     authentication() {
-      return this.$store.state.checkAuthenticate.userToken;
+      return this.$store.state.checkAuthenticate.user_id;
     }
   },
   watch: {
     authentication() {
-      this.userToken = this.authentication;
-
       this.$router.push("/home");
       this.$store.dispatch("fetchCategories");
     }

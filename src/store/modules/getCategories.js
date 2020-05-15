@@ -4,14 +4,14 @@ const categories = {
     clearState(state) {
       state.categories = [];
     },
-    addCategories(state, data) {
+    renderCategories(state, data) {
       state.categories = data;
     }
   },
   actions: {
     async fetchCategories(ctx) {
       ctx.commit("clearState");
-      const url = "http://localhost:3005/admin/categories";
+      const url = "http://localhost:3005/forumContent/getCategories";
       fetch(url, {
         method: "GET",
         headers: { "Content-Type": "application/json" }
@@ -19,7 +19,7 @@ const categories = {
         .then(response => response.json())
         .then(data => {
           if (data) {
-            ctx.commit("addCategories", data);
+            ctx.commit("renderCategories", data);
           }
         })
         .catch(error => {
