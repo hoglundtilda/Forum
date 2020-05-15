@@ -5,29 +5,30 @@ const forumPosts = {
   mutations: {
     clearState(state) {
       state.category = {};
-    }
+    },
   },
   actions: {
     async postNewTopic(ctx, post) {
       const url = "http://localhost:3005/forumPosts/addTopic";
+      console.log(post);
       fetch(url, {
         method: "POST",
         body: JSON.stringify(post),
-        headers: { "Content-Type": "application/json" }
+        headers: { "Content-Type": "application/json" },
       })
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           console.log(data);
           if (data) {
             console.log(data);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.error("Error:", error);
         });
-    }
+    },
   },
-  modules: {}
+  modules: {},
 };
 
 export default forumPosts;

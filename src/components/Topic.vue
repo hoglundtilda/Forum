@@ -22,12 +22,12 @@
 export default {
   data: () => {
     return {};
-  },
-  computed: {
+  }
+  /*   computed: {
     topic() {
       return this.$store.state.getTopic.topic;
     }
-  }
+  } */
 };
 </script>
 

@@ -20,7 +20,7 @@ router.get("/getCategories", async (req, res) => {
   }
 });
 
-const getCategoryTopics = async category_id => {
+const getCategoryTopics = async (category_id) => {
   const category = await mongoose
     .model("Category", categorySchema)
     .findOne({ _id: category_id })
@@ -30,20 +30,20 @@ const getCategoryTopics = async category_id => {
 };
 
 // get specific category with topics
-router.post("/categoryTopics", (req, res) => {
-  const category_id = req.body.id;
+router.get("/categoryTopics", (req, res) => {
+  const category_id = req.headers.category_id;
   console.log(category_id);
   getCategoryTopics(category_id)
-    .then(category => {
+    .then((category) => {
       if (!category) {
         res.status(403);
       } else {
         res.json({
-          category
+          category,
         });
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.log("Error:  ", error);
     });
 });
