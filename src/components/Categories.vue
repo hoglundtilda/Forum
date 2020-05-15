@@ -2,7 +2,7 @@
   <div class="categories">
     <h3>Categories</h3>
     <li
-      @click="fetchCategory(category._id)"
+      @click="category(category.id)"
       v-for="(category, index) in categories"
       :key="index"
       class="category-title"
@@ -20,6 +20,7 @@ export default {
   },
   computed: {
     categories() {
+      console.log(this.$store.state.getCategories.categories);
       return this.$store.state.getCategories.categories;
     }
   },
@@ -27,11 +28,11 @@ export default {
     categoryPanel() {
       this.$router.push("/Admin");
     },
-    fetchCategory(id) {
-      const category_id = { id: id };
-      this.$store.dispatch("fetchCategoryTopics", category_id);
+    category(id) {
+      this.$store.dispatch("categoryTopics", id);
     }
-  }
+  },
+  mounted() {}
 };
 </script>
 
@@ -50,7 +51,6 @@ export default {
   .category-title {
     padding: 5px 0;
     color: $grey;
-    cursor: pointer;
   }
 
   .add-category {

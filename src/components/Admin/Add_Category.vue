@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     postCategory() {
-      const url = "http://localhost:3005/admin/addCat";
+      const url = "http://localhost:3005/admin/category";
       fetch(url, {
         method: "POST",
         body: JSON.stringify(this.category),

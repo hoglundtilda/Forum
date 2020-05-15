@@ -34,7 +34,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
-    if (localStorage.getItem("user_id")) {
+    if (window.localStorage.getItem("jwt")) {
       next();
     } else {
       next({ name: "login" });

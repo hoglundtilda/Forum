@@ -1,39 +1,19 @@
 <template>
   <div class="discussion">
-    <section v-if="showSpecificTopic" class="topic">
-      <Topic />
-      <Topic-Replies />
-    </section>
-    <CategoryTopics v-else @postTopic="postTopic" />
-    <PostTopic :category_id="category_id" v-if="showPostTopic" />
+    <Topic />
+    <Topic-Replies />
   </div>
 </template>
 
 <script>
 import Topic from "./Topic";
 import TopicReplies from "./Topic_Reply";
-import CategoryTopics from "./CategoryTopics";
-import PostTopic from "./PostTopic";
 
 export default {
+  props: Object,
   components: {
     Topic,
-    TopicReplies,
-    CategoryTopics,
-    PostTopic
-  },
-  data: () => {
-    return {
-      showSpecificTopic: false,
-      showPostTopic: false,
-      category_id: ""
-    };
-  },
-  methods: {
-    postTopic(id) {
-      this.category_id = id;
-      this.showPostTopic = true;
-    }
+    TopicReplies
   }
 };
 </script>
