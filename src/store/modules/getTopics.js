@@ -1,18 +1,22 @@
 const topics = {
-  state: { category: {} },
+  state: { category: {}, topics: {} },
   mutations: {
     clearState(state) {
       state.category = {};
     },
+    category(state, data) {
+      console.log(data);
 
-    renderTopics(state, data) {
       state.category = data;
+    },
+    topics(state, data) {
+      state.topics = data;
     },
   },
   actions: {
-    async fetchCategoryTopics(ctx, category_id) {
+    async getCategory(ctx, category_id) {
       ctx.commit("clearState");
-      console.log(category_id + "fuuck");
+
       const url = "http://localhost:3005/forumContent/categoryTopics";
       fetch(url, {
         method: "GET",
@@ -24,7 +28,29 @@ const topics = {
         .then((response) => response.json())
         .then((data) => {
           if (data) {
-            ctx.commit("renderTopics", data.category);
+            ctx.commit("category", data.category);
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    },
+    async getTopics(ctx, category_id) {
+      ctx.commit("clearState");
+
+      const url = "http://localhost:3005/forumContent/getTopicsByCategory";
+      fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          category_id: category_id,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data) {
+            console.log(data);
+            ctx.commit("topic", data.category);
           }
         })
         .catch((error) => {

@@ -1,11 +1,11 @@
 <template>
   <div class="discussion">
-    <section v-if="showSpecificTopic" class="topic">
+    <section v-if="showTopic" class="topic">
       <Topic />
       <Topic-Replies />
     </section>
-    <CategoryTopics v-else @postTopic="postTopic" />
-    <PostTopic :category_id="category_id" v-if="showPostTopic" />
+    <CategoryTopics v-else-if="showCategory" @postTopic="postTopic" />
+    <PostTopic v-else :category_id="category_id" />
   </div>
 </template>
 
@@ -24,15 +24,16 @@ export default {
   },
   data: () => {
     return {
-      showSpecificTopic: false,
-      showPostTopic: false,
+      showTopic: false,
+      showCategory: true,
       category_id: ""
     };
   },
   methods: {
     postTopic(id) {
       this.category_id = id;
-      this.showPostTopic = true;
+      this.showCategory = false;
+      this.showTopic = false;
     }
   }
 };

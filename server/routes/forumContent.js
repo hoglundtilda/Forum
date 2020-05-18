@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const router = express.Router();
 const db = mongoose.connection;
 const categorySchema = db.usersSchema;
+const topicSchema = db.topicSchema;
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -46,6 +47,18 @@ router.get("/categoryTopics", (req, res) => {
     .catch((error) => {
       console.log("Error:  ", error);
     });
+});
+
+router.get("/getTopicsByCategory", async (req, res) => {
+  const category_id = req.headers.category_id;
+  console.log(req.headers);
+  const topic = await mongoose
+    .model("Topic", topicSchema)
+    .find({ category_id: category_id })
+    .exec();
+
+  console.log(topic);
+  res.json(topic);
 });
 
 module.exports = router;

@@ -2,7 +2,7 @@
   <div class="categories">
     <h3>Categories</h3>
     <li
-      @click="fetchCategory(category._id)"
+      @click="getCategory(category._id)"
       v-for="(category, index) in categories"
       :key="index"
       class="category-title"
@@ -18,6 +18,11 @@ export default {
   data: () => {
     return {};
   },
+  watch: {
+    categories() {
+      //this.$store.dispatch("fetchCategories");
+    }
+  },
   computed: {
     categories() {
       return this.$store.state.getCategories.categories;
@@ -27,9 +32,13 @@ export default {
     categoryPanel() {
       this.$router.push("/Admin");
     },
-    fetchCategory(category_id) {
-      this.$store.dispatch("fetchCategoryTopics", category_id);
+    getCategory(category_id) {
+      this.$store.dispatch("getCategory", category_id);
+      this.$store.dispatch("getTopics", category_id);
     }
+  },
+  beforeUpdate() {
+    this.$store.dispatch("fetchCategories");
   }
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="category">
-    <h3>Post a Topic</h3>
+    <h3>Post new Topic</h3>
     <input v-model="topic.title" type="text" name="title" placeholder="Title" autocomplete="off" />
     <textarea v-model="topic.description" type="text" name="description" autocomplete="off" />
 
@@ -31,9 +31,9 @@ export default {
         category_id: this.category_id,
         title: this.topic.title,
         description: this.topic.description,
-        user_id: user_id
+        created_at: new Date(),
+        user_id: JSON.parse(localStorage.getItem("user_id"))
       };
-      console.log(post);
       this.$store.dispatch("postNewTopic", post);
     }
   }
@@ -52,7 +52,6 @@ export default {
   background: $dark;
   padding: 2rem;
   border-radius: 5px;
-  box-shadow: $box-shadow;
 
   input {
     color: $grey;
@@ -73,6 +72,22 @@ export default {
     font-size: 1rem;
     color: $grey;
     opacity: 0.7;
+  }
+
+  textarea {
+    height: 12rem;
+    background: $black;
+    color: $grey;
+    border-radius: 5px;
+    font-family: "Ubuntu";
+    font-size: 1rem;
+    border: none;
+  }
+
+  .btn {
+    padding: 10px;
+    margin: 1rem 0;
+    align-self: flex-end;
   }
 }
 </style>

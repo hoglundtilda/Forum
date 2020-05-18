@@ -24,13 +24,6 @@
         <p class="username">John Doe</p>
       </section>
     </header>
-    <!--   <section class="highlighted-area">
-      <div>
-        <h2>Who are you?</h2>
-        <p>Introduce yourself with a post</p>
-      </div>
-      <button class="cta">New Post</button>
-    </section>-->
   </div>
 </template>
 

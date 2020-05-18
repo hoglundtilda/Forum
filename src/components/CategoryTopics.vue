@@ -10,18 +10,18 @@
     <span class="divider"></span>
     <section class="content">
       <div class="content-header">
-        <p class="title">Title</p>
+        <p class="topic">Topic</p>
 
         <p class="author">Author</p>
 
         <aside class="created">Created at</aside>
       </div>
-      <li v-for="(topic, index) in category.topics" :key="index" class="topic-grid">
-        <p class="title">{{title}}</p>
+      <li v-for="(topic, index) in topics" :key="index" class="topic-grid">
+        <p class="title">{{topic.title}}</p>
 
-        <p class="author">{{author}}</p>
+        <p class="author">{{topic.author}}</p>
 
-        <aside class="created">{{created_at}}</aside>
+        <aside class="created">{{topic.created_at}}</aside>
       </li>
     </section>
   </div>
@@ -35,6 +35,10 @@ export default {
   computed: {
     category() {
       return this.$store.state.getTopics.category;
+    },
+    topics() {
+      console.log(this.$store.state.getTopics.topics);
+      return this.$store.state.getTopics.topics;
     }
   },
   methods: {
@@ -57,6 +61,17 @@ export default {
   .header {
     display: flex;
     justify-content: space-between;
+
+    .add-topic {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      i {
+        color: $white;
+        margin: 0 0 0.5rem 0.5rem;
+      }
+    }
   }
 
   .divider {
@@ -76,7 +91,7 @@ export default {
       grid-template-areas: "title author createdAt";
       padding: 1rem 1rem 1rem 0;
       font-size: 1rem;
-      .title {
+      .topic {
         grid-area: title;
         color: $white;
       }
