@@ -15,7 +15,7 @@ router.post("/addTopic", (req, res) => {
   const title = req.body.title;
   const description = req.body.description;
   const date = new Date();
-
+console.log("here")
   const topic = new Topic({
     category_id: category_id,
     title: title,

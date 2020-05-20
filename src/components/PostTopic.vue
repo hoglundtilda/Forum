@@ -4,7 +4,7 @@
     <input v-model="topic.title" type="text" name="title" placeholder="Title" autocomplete="off" />
     <textarea v-model="topic.description" type="text" name="description" autocomplete="off" />
 
-    <button @click="postTopic" class="btn">Add Category</button>
+    <button @click="postTopic" class="btn">Post Topic</button>
   </div>
 </template>
 
@@ -25,14 +25,12 @@ export default {
   },
   methods: {
     postTopic() {
-      const user_id = window.localStorage.getItem("user_id");
-
       const post = {
         category_id: this.category_id,
         title: this.topic.title,
         description: this.topic.description,
         created_at: new Date(),
-        user_id: JSON.parse(localStorage.getItem("user_id"))
+        user_id: localStorage.getItem("user_id")
       };
       this.$store.dispatch("postNewTopic", post);
     }
