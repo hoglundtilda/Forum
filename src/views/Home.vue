@@ -4,7 +4,7 @@
     <main class="main">
       <Categories class="categories" @category="showCategory" />
       <Discussion class="discussion" :Topic="topic" />
-      <SideBar class="side-bar" />
+      <!-- <SideBar class="side-bar" /> -->
     </main>
   </div>
 </template>
@@ -13,14 +13,14 @@
 import Header from "../components/Header";
 import Categories from "../components/Categories";
 import Discussion from "../components/Discussion";
-import SideBar from "../components/Side";
+//import SideBar from "../components/Side";
 
 export default {
   components: {
     Header,
     Categories,
     Discussion,
-    SideBar
+    //SideBar
   },
   data: () => {
     return {
@@ -51,7 +51,7 @@ export default {
 
   .main {
     display: grid;
-    grid-template-columns: 15% 70% 15%;
+    grid-template-columns: 20% 80%;
     column-gap: 0.5rem;
 
     width: 100%;
@@ -65,9 +65,9 @@ export default {
       padding: 1rem;
     }
 
-    .side-bar {
+    /* .side-bar {
       padding: 1rem;
-    }
+    } */
   }
 }
 </style>

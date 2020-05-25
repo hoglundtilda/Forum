@@ -1,12 +1,7 @@
 <template>
   <div class="side-menu">
-    <h3>Side</h3>
-    <p>Something</p>
-    <p>Something else</p>
-    <p>Anything</p>
-    <p>Let's be serious</p>
-    <p>Another something</p>
-    <p>And another useless something</p>
+    <h3>Admin</h3>
+
   </div>
 </template>
 

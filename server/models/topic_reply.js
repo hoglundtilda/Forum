@@ -5,7 +5,7 @@ const topic_replySchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  category_id: {
+  reply_id: {
     type: Number,
     required: true
   },

@@ -18,7 +18,7 @@ const topics = {
     async getCategory(ctx, category_id) {
       ctx.commit("clearState");
 
-      const url = "http://localhost:3005/forumContent/categoryTopics";
+      const url = "http://localhost:3005/categories/getCategory";
       fetch(url, {
         method: "GET",
         headers: {
@@ -38,7 +38,7 @@ const topics = {
     },
     async getTopics(ctx, category_id) {
       ctx.commit("clearState");
-      const url = "http://localhost:3005/forumContent/getTopicsByCategory";
+      const url = "http://localhost:3005/categories/getTopicsByCategory";
       fetch(url, {
         method: "GET",
         headers: {

@@ -16,7 +16,7 @@
 
         <aside class="created">Created at</aside>
       </div>
-      <li v-for="(topic, index) in topics" :key="index" class="topic-grid">
+      <li v-for="(topic, index) in topics" :key="index" @click="showTopic(topic._id)" class="topic-grid">
         <p class="title">{{topic.title}}</p>
 
         <p class="author">{{topic.author}}</p>
@@ -45,6 +45,10 @@ export default {
   methods: {
     postTopic() {
       this.$emit("postTopic");
+    },
+    showTopic(id) {
+      this.$store.dispatch("getTopic", id)
+      this.$store.dispatch("getTopicReplies", id)
     }
   }
 };

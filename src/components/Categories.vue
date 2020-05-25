@@ -7,9 +7,6 @@
       :key="index"
       class="category-title"
     >{{ category.title}}</li>
-    <aside @click="categoryPanel" class="add-category">
-      <i class="fas fa-plus"></i>
-    </aside>
   </div>
 </template>
 

@@ -1,9 +1,9 @@
 <template>
   <div class="topic">
     <section class="header">
-      <h4 class="title">How to create relations between databases in mongoDB/mongoose?</h4>
+      <h4 class="title"></h4>
       <div class="user">
-        <p class="username">John Doe</p>
+        <p class="username"></p>
 
         <i class="fas fa-user-circle"></i>
       </div>
@@ -11,8 +11,8 @@
     <span class="divider"></span>
     <section class="content">
       <p
-        class="description"
-      >Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+        class="content"
+      ></p>
       <aside class="created">13:20 02/06/19</aside>
     </section>
   </div>
@@ -55,7 +55,7 @@ export default {
     display: flex;
     justify-content: space-between;
 
-    .description {
+    .content {
       width: 80%;
       color: $grey;
       padding: 0 2rem 2rem 0;

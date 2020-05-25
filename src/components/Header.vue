@@ -9,6 +9,7 @@
           <li>Hot Topics</li>
           <li>New Topics</li>
           <li>Rules</li>
+          <li @click="goToAdmin">ADMIN</li>
         </ul>
       </nav>
       <section class="user">
@@ -33,6 +34,9 @@ export default {
     goToHomepage() {
 this.$router.push("/home");
 
+    },
+    goToAdmin() {
+      this.$router.push("/Admin")
     }
   }
 }

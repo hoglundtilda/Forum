@@ -10,7 +10,7 @@ const categories = {
   },
   actions: {
     async fetchCategories(ctx) {
-      const url = "http://localhost:3005/forumContent/getCategories";
+      const url = "http://localhost:3005/categories/getCategories";
       fetch(url, {
         method: "GET",
         headers: { "Content-Type": "application/json" },

@@ -3,7 +3,8 @@ import Vuex from "vuex";
 import authenticate from "./modules/authenticate";
 import categories from "./modules/getCategories";
 import topics from "./modules/getTopics";
-import forumPosts from "./modules/forumPosts";
+import postNewTopic from "./modules/postNewTopic";
+import topicReplies from "./modules/topicReplies"
 import display from "./modules/display"
 
 Vue.use(Vuex);
@@ -16,7 +17,8 @@ export default new Vuex.Store({
     checkAuthenticate: authenticate,
     getCategories: categories,
     getTopics: topics,
-    postInForum: forumPosts,
+    postNewTopic,
+    topicReplies,
     display
   }
 });

@@ -1,6 +1,4 @@
-import { JsonWebTokenError } from "jsonwebtoken";
-
-const forumPosts = {
+const postNewTopic = {
   state: {},
   mutations: {
     clearState(state) {
@@ -9,7 +7,7 @@ const forumPosts = {
   },
   actions: {
     async postNewTopic(ctx, post) {
-      const url = "http://localhost:3005/forumPosts/addTopic";
+      const url = "http://localhost:3005/topics/postTopic";
       console.log(post);
       fetch(url, {
         method: "POST",
@@ -31,4 +29,4 @@ const forumPosts = {
   modules: {},
 };
 
-export default forumPosts;
+export default postNewTopic;
