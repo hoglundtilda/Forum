@@ -4,6 +4,7 @@ import authenticate from "./modules/authenticate";
 import categories from "./modules/getCategories";
 import topics from "./modules/getTopics";
 import forumPosts from "./modules/forumPosts";
+import display from "./modules/display"
 
 Vue.use(Vuex);
 
@@ -15,6 +16,7 @@ export default new Vuex.Store({
     checkAuthenticate: authenticate,
     getCategories: categories,
     getTopics: topics,
-    postInForum: forumPosts
+    postInForum: forumPosts,
+    display
   }
 });

@@ -2,7 +2,7 @@
   <div class="wrapper">
     <header class="header">
       <div class="title">
-        <h1>GeekStorm</h1>
+        <h1 @click="goToHomepage">GeekStorm</h1>
       </div>
       <nav class="nav">
         <ul>
@@ -26,6 +26,17 @@
     </header>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    goToHomepage() {
+this.$router.push("/home");
+
+    }
+  }
+}
+</script>
 
 
 <style lang="scss" scoped>

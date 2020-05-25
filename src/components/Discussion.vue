@@ -1,11 +1,17 @@
 <template>
   <div class="discussion">
-    <section v-if="showTopic" class="topic">
+    <section v-if="this.$store.state.display.showTopic === true" class="topic">
       <Topic />
       <Topic-Replies />
     </section>
-    <CategoryTopics v-else-if="showCategory" @postTopic="postTopic" />
-    <PostTopic v-else :category_id="category_id" />
+    <CategoryTopics
+      v-else-if="this.$store.state.display.showCategory === true"
+      @postTopic="postTopic"
+    />
+    <PostTopic
+      v-else-if="this.$store.state.display.postTopic === true"
+      :category_id="category_id"
+    />
   </div>
 </template>
 
@@ -20,22 +26,21 @@ export default {
     Topic,
     TopicReplies,
     CategoryTopics,
-    PostTopic
+    PostTopic,
   },
   data: () => {
     return {
-      showTopic: false,
-      showCategory: true,
-      category_id: ""
+      category_id: "",
     };
   },
   methods: {
     postTopic(id) {
       this.category_id = id;
-      this.showCategory = false;
-      this.showTopic = false;
-    }
-  }
+      this.$store.state.display.showCategory = false;
+      this.$store.state.display.showTopic = false;
+      this.$store.state.display.postTopic = true;
+    },
+  },
 };
 </script>
 

@@ -38,6 +38,7 @@ export default {
     },
     topics() {
       console.log(this.$store.state.getTopics.topics);
+      console.log("here")
       return this.$store.state.getTopics.topics;
     }
   },

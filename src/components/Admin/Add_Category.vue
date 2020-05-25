@@ -52,6 +52,7 @@ export default {
           console.log(data);
           if (data.success) {
             this.complete = true;
+            
           }
         })
         .catch(error => {

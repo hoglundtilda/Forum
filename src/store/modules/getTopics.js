@@ -1,3 +1,5 @@
+import store from "..";
+
 const topics = {
   state: { category: {}, topics: {} },
   mutations: {
@@ -5,12 +7,11 @@ const topics = {
       state.category = {};
     },
     category(state, data) {
-      console.log(data);
-
       state.category = data;
     },
     topics(state, data) {
       state.topics = data;
+      store.state.display.showCategory = true
     },
   },
   actions: {
@@ -37,7 +38,6 @@ const topics = {
     },
     async getTopics(ctx, category_id) {
       ctx.commit("clearState");
-
       const url = "http://localhost:3005/forumContent/getTopicsByCategory";
       fetch(url, {
         method: "GET",
@@ -49,8 +49,7 @@ const topics = {
         .then((response) => response.json())
         .then((data) => {
           if (data) {
-            console.log(data);
-            ctx.commit("topic", data.category);
+            ctx.commit("topics", data);
           }
         })
         .catch((error) => {
