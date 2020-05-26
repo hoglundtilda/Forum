@@ -6,7 +6,7 @@
         <p class="reply">{{reply.content}}</p>
         <div class="details">
           <div class="user">
-            <p class="username">{{reply.user_id}}</p>
+            <p class="username">{{reply.username}}</p>
 
             <i class="fas fa-user-circle"></i>
           </div>

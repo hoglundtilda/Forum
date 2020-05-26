@@ -8,6 +8,7 @@ const router = express.Router();
 const db = mongoose.connection;
 const topicSchema = db.topicSchema;
 const topic_replySchema = db.topic_replySchema;
+const userSchema = db.userSchema;
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -30,19 +31,24 @@ router.post("/postTopic", (req) => {
   topic.save();
 });
 
-router.post("/postReply", (req) => {
+router.post("/postReply", async (req) => {
   const user_id = req.body.user_id;
   const topic_id = req.body.topic_id;
   const content = req.body.content;
   const date = new Date();
-  console.log("here");
+  const user = await mongoose
+    .model("User", userSchema)
+    .findOne({ _id: user_id })
+    .exec();
 
   const reply = new Reply({
     topic_id: topic_id,
     content: content,
     user_id: user_id,
+    username: user.username,
     created_at: date,
   });
+  console.log(reply);
 
   reply.save();
 });
