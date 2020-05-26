@@ -35,6 +35,7 @@ router.post("/postReply", (req) => {
   const topic_id = req.body.topic_id;
   const content = req.body.content;
   const date = new Date();
+  console.log("here");
 
   const reply = new Reply({
     topic_id: topic_id,
@@ -48,13 +49,12 @@ router.post("/postReply", (req) => {
 
 router.get("/getTopic", async (req, res) => {
   try {
-    const topic_id = req.headers.topic_id
+    const topic_id = req.headers.topic_id;
     const topic = await mongoose
       .model("Topic", topicSchema)
       .findOne({ _id: topic_id })
       .exec();
-      res.json(topic);
-
+    res.json(topic);
   } catch (err) {
     console.log(err);
   }
@@ -67,8 +67,7 @@ router.get("/getTopicReplies", async (req, res) => {
       .model("Topic_reply", topic_replySchema)
       .find({ topic_id: topic_id })
       .exec();
-      res.json(topic);
-
+    res.json(topic);
   } catch (err) {
     console.log(err);
   }

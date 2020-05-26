@@ -32,14 +32,13 @@
 export default {
   methods: {
     goToHomepage() {
-this.$router.push("/home");
-
+      this.$router.push("/home");
     },
     goToAdmin() {
-      this.$router.push("/Admin")
+      this.$router.push("/Admin");
     }
   }
-}
+};
 </script>
 
 
@@ -63,6 +62,7 @@ this.$router.push("/home");
 
     .title {
       grid-column: 1/1;
+      cursor: pointer;
       h1 {
         margin: 0;
         padding: 0 10%;

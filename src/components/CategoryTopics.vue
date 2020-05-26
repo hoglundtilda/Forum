@@ -1,5 +1,5 @@
 <template>
-  <div class="topic">
+  <div class="topics">
     <section class="header">
       <h4 class="title">{{category.title}}</h4>
       <div @click="postTopic" class="add-topic">
@@ -16,7 +16,12 @@
 
         <aside class="created">Created at</aside>
       </div>
-      <li v-for="(topic, index) in topics" :key="index" @click="showTopic(topic._id)" class="topic-grid">
+      <li
+        v-for="(topic, index) in topics"
+        :key="index"
+        @click="showTopic(topic._id)"
+        class="topic-grid"
+      >
         <p class="title">{{topic.title}}</p>
 
         <p class="author">{{topic.author}}</p>
@@ -37,8 +42,6 @@ export default {
       return this.$store.state.getTopics.category;
     },
     topics() {
-      console.log(this.$store.state.getTopics.topics);
-      console.log("here")
       return this.$store.state.getTopics.topics;
     }
   },
@@ -47,8 +50,8 @@ export default {
       this.$emit("postTopic");
     },
     showTopic(id) {
-      this.$store.dispatch("getTopic", id)
-      this.$store.dispatch("getTopicReplies", id)
+      this.$store.dispatch("getTopic", id);
+      this.$store.dispatch("getTopicReplies", id);
     }
   }
 };
@@ -57,7 +60,7 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/scss/variables.scss";
 @import "../assets/scss/textStyles";
-.topic {
+.topics {
   display: flex;
   flex-direction: column;
   background: $dark;
@@ -92,7 +95,7 @@ export default {
 
     .content-header {
       display: grid;
-      grid-template-columns: 60% 23% 18%;
+      grid-template-columns: 58% 20% 22%;
       grid-template-areas: "title author createdAt";
       padding: 1rem 1rem 1rem 0;
       font-size: 1rem;
@@ -117,7 +120,7 @@ export default {
 
     .topic-grid {
       display: grid;
-      grid-template-columns: 60% 23% 18%;
+      grid-template-columns: 58% 20% 22%;
       grid-template-areas: "title author createdAt";
       padding: 1.5rem 1rem 0 0;
       cursor: pointer;

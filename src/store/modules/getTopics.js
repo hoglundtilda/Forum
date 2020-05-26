@@ -11,7 +11,8 @@ const topics = {
     },
     topics(state, data) {
       state.topics = data;
-      store.state.display.showCategory = true
+      store.state.display.showTopic = false;
+      store.state.display.showCategory = true;
     },
   },
   actions: {

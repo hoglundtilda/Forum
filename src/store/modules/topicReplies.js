@@ -1,8 +1,11 @@
-const postNewTopic = {
+import store from "..";
+
+const topicReplies = {
   state: { topic: {}, replies: {} },
   mutations: {
     topic(state, data) {
       state.topic = data;
+      store.state.display.showTopic = true;
     },
     replies(state, data) {
       state.replies = data;
@@ -17,7 +20,6 @@ const postNewTopic = {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           if (data) {
             console.log(data);
             ctx.commit("topic", data);
@@ -35,7 +37,6 @@ const postNewTopic = {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           if (data) {
             console.log(data);
             ctx.commit("replies", data);
@@ -45,8 +46,24 @@ const postNewTopic = {
           console.error("Error:", error);
         });
     },
+    async postReply(ctx, post) {
+      const url = "http://localhost:3005/topics/postReply";
+      fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(post),
+      })
+        .then((response) => response.json())
+        .then(() => {
+          store.state.display.postReply = false;
+          store.state.display.showTopic = true;
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    },
   },
   modules: {},
 };
 
-export default postNewTopic;
+export default topicReplies;

@@ -15,11 +15,7 @@ export default {
   data: () => {
     return {};
   },
-  watch: {
-    categories() {
-      //this.$store.dispatch("fetchCategories");
-    }
-  },
+  watch: {},
   computed: {
     categories() {
       return this.$store.state.getCategories.categories;

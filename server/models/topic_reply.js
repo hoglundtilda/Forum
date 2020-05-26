@@ -1,26 +1,22 @@
 const mongoose = require("mongoose");
 
 const topic_replySchema = new mongoose.Schema({
-  id: {
-    type: Number,
-    required: true
-  },
-  reply_id: {
-    type: Number,
-    required: true
+  topic_id: {
+    type: String,
+    required: true,
   },
   user_id: {
-    type: Number,
-    required: true
+    type: String,
+    required: true,
   },
   content: {
     type: String,
-    required: true
+    required: true,
   },
   created_at: {
     type: Date,
-    required: true
-  }
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Topic_reply", topic_replySchema);

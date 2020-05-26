@@ -19,7 +19,7 @@ export default {
   components: {
     Header,
     Categories,
-    Discussion,
+    Discussion
     //SideBar
   },
   data: () => {
@@ -51,7 +51,7 @@ export default {
 
   .main {
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 150px 88%;
     column-gap: 0.5rem;
 
     width: 100%;

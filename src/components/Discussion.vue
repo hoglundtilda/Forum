@@ -2,35 +2,35 @@
   <div class="discussion">
     <section v-if="this.$store.state.display.showTopic === true" class="topic">
       <Topic />
-      <Topic-Replies />
+      <Replies />
     </section>
     <CategoryTopics
       v-else-if="this.$store.state.display.showCategory === true"
       @postTopic="postTopic"
     />
-    <PostTopic
-      v-else-if="this.$store.state.display.postTopic === true"
-      :category_id="category_id"
-    />
+    <PostTopic v-else-if="this.$store.state.display.postTopic === true" :category_id="category_id" />
+    <PostReply v-else-if="this.$store.state.display.postReply === true" />
   </div>
 </template>
 
 <script>
 import Topic from "./Topic";
-import TopicReplies from "./Topic_Reply";
+import Replies from "./Replies";
 import CategoryTopics from "./CategoryTopics";
 import PostTopic from "./PostTopic";
+import PostReply from "./PostReply";
 
 export default {
   components: {
     Topic,
-    TopicReplies,
+    Replies,
     CategoryTopics,
     PostTopic,
+    PostReply
   },
   data: () => {
     return {
-      category_id: "",
+      category_id: ""
     };
   },
   methods: {
@@ -39,8 +39,8 @@ export default {
       this.$store.state.display.showCategory = false;
       this.$store.state.display.showTopic = false;
       this.$store.state.display.postTopic = true;
-    },
-  },
+    }
+  }
 };
 </script>
 
