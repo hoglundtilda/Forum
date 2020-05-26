@@ -1,7 +1,7 @@
 <template>
   <div class="profile">
     <div class="avatar">
-      <img src alt />
+      <img src="https://www.ixxiyourworld.com/media/2393403/ixxi-lila-and-lola-rabbit-print315_lilaxlola_papersize.jpg?mode=crop&width=130&height=130" alt />
     </div>
     <section class="user-info">
       <p class="username">Username</p>
@@ -25,14 +25,22 @@
 
 .profile {
   width: 100%;
+  background: $dark;
+  box-shadow: $box-shadow;
+  border-radius: 5px;
   padding: 5rem;
   display: grid;
   grid-template-areas: "avatar user-info activity";
   grid-template-columns: 1fr 1fr 1fr;
 
   .avatar {
-    height: 180px;
-    width: 160px;
+    height: 130px;
+    width: 130px;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
   }
 
   p {
@@ -46,16 +54,16 @@
   }
 
   .register-info {
-      display: flex;
+    display: flex;
 
-      p {
-          margin-right: 0.2rem;
-      }
+    p {
+      margin-right: 0.2rem;
+    }
 
-      .registred-since {
-          color: $grey;
-          opacity: 0.8;
-      }
+    .registred-since {
+      color: $grey;
+      opacity: 0.8;
+    }
   }
 
   .link {
@@ -65,6 +73,12 @@
   .link:hover {
     color: $cyan;
     cursor: pointer;
+  }
+
+  .activity {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
   }
 }
 </style>
