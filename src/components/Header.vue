@@ -19,10 +19,10 @@
         <button class="user-menu">
           <i class="fas fa-bell"></i>
         </button>
-        <button class="user-menu profile">
+        <button class="user-menu profile" @click="goToProfile">
           <i class="fas fa-user-circle"></i>
         </button>
-        <p class="username">John Doe</p>
+        <p class="username" @click="goToProfile">{{user.username}}</p>
       </section>
     </header>
   </div>
@@ -30,12 +30,23 @@
 
 <script>
 export default {
+  computed: {
+    user() {
+      const user = JSON.parse(localStorage.getItem("user"))
+      console.log(user)
+      return user
+    }
+  },
   methods: {
     goToHomepage() {
       this.$router.push("/home");
     },
     goToAdmin() {
       this.$router.push("/Admin");
+    },
+    goToProfile() {
+      this.$store.state.display.discussion = false;
+      this.$store.state.display.profile = true;
     }
   }
 };
@@ -96,25 +107,25 @@ export default {
 
       .user-menu {
         margin: 0 0.5rem;
+        display:flex;
+        align-self: center;
+
+        i {
+          font-size: 1rem;
+        }
       }
+
       .profile {
-        font-size: 2rem;
+        font-size: 1.6rem;
+        cursor: pointer;
+      }
+
+      .username {
+        font-size: 0.9rem;
+        cursor: pointer;
       }
     }
   }
-  .highlighted-area {
-    /*background-image: url("../assets/img/code.png");
-    background-attachment: fixed;
-    background-size: contain; */
-    height: 7rem;
-    display: flex;
-    padding: 3rem;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    border: 2px solid $white;
-    border-radius: 10px;
-    color: $white;
-  }
+  
 }
 </style>

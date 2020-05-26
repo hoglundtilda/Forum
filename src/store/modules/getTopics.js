@@ -12,6 +12,8 @@ const topics = {
     topics(state, data) {
       state.topics = data;
       store.state.display.showTopic = false;
+      store.state.display.profile = false;
+      store.state.display.discussion = true;
       store.state.display.showCategory = true;
     },
   },

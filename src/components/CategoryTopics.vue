@@ -24,7 +24,7 @@
       >
         <p class="title">{{topic.title}}</p>
 
-        <p class="author">{{topic.author}}</p>
+        <p class="author">{{topic.username}}</p>
 
         <aside class="created">{{topic.created_at}}</aside>
       </li>

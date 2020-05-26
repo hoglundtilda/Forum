@@ -2,8 +2,8 @@ const authenticate = {
   state: { user_id: "" },
   mutations: {
     loginUser(state, data) {
-      console.log(data);
-      localStorage.setItem("user_id", data);
+      localStorage.setItem("user_id", data.user._id);
+      localStorage.setItem("user", JSON.stringify(data.user))
       state.user_id = data;
     }
   },
@@ -34,8 +34,7 @@ const authenticate = {
         .then(response => response.json())
         .then(data => {
           if (data.success) {
-            console.log(data);
-            ctx.commit("loginUser", data.user._id);
+            ctx.commit("loginUser", data);
           }
         })
         .catch(error => {

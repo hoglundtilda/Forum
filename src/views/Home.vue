@@ -3,7 +3,8 @@
     <Header class="header" />
     <main class="main">
       <Categories class="categories" @category="showCategory" />
-      <Discussion class="discussion" :Topic="topic" />
+      <Discussion v-if="this.$store.state.display.discussion === true" class="discussion" :Topic="topic" />
+      <Profile v-else-if="this.$store.state.display.profile === true" />
       <!-- <SideBar class="side-bar" /> -->
     </main>
   </div>
@@ -13,13 +14,16 @@
 import Header from "../components/Header";
 import Categories from "../components/Categories";
 import Discussion from "../components/Discussion";
+import Profile from "../components/Profile";
+
 //import SideBar from "../components/Side";
 
 export default {
   components: {
     Header,
     Categories,
-    Discussion
+    Discussion,
+    Profile
     //SideBar
   },
   data: () => {

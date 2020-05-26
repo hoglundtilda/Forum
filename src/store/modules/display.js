@@ -4,6 +4,8 @@ const display = {
     showCategory: false,
     postTopic: false,
     postReply: false,
+    discussion: false,
+    profile: true,
   },
   mutations: {},
   actions: {},
