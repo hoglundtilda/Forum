@@ -3,24 +3,28 @@ const mongoose = require("mongoose");
 const topicSchema = new mongoose.Schema({
   category_id: {
     type: String,
-    required: true
+    required: true,
   },
   title: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    required: true
+    required: true,
   },
   user_id: {
     type: String,
-    required: true
+    required: true,
+  },
+  username: {
+    type: String,
+    required: true,
   },
   created_at: {
     type: Date,
-    required: true
-  }
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Topic", topicSchema);

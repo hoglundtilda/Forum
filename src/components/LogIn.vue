@@ -7,7 +7,7 @@
     </div>
     <div class="pwd">
       <i class="fas fa-lock"></i>
-      <input v-model="pwd" placeholder="Password" name="password" type="text" />
+      <input v-model="pwd" placeholder="Password" name="password" type="password" />
     </div>
     <button @click="logIn" class="btn">Login</button>
     <span class="switch-form" @click="signUp">Don't have an account? Sign Up!</span>

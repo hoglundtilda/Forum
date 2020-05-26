@@ -14,7 +14,7 @@
         <p class="reply">{{topic.description}}</p>
         <div class="details">
           <div class="user">
-            <p class="username">{{topic.user_id}}</p>
+            <p class="username">{{topic.username}}</p>
 
             <i class="fas fa-user-circle"></i>
           </div>

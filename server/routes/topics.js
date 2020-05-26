@@ -13,18 +13,24 @@ const userSchema = db.userSchema;
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-router.post("/postTopic", (req) => {
+router.post("/postTopic", async (req) => {
   const user_id = req.body.user_id;
   const category_id = req.body.category_id;
   const title = req.body.title;
   const description = req.body.description;
   const date = new Date();
 
+  const user = await mongoose
+    .model("User", userSchema)
+    .findOne({ _id: user_id })
+    .exec();
+
   const topic = new Topic({
     category_id: category_id,
     title: title,
     description: description,
     user_id: user_id,
+    username: user.username,
     created_at: date,
   });
 
@@ -48,7 +54,6 @@ router.post("/postReply", async (req) => {
     username: user.username,
     created_at: date,
   });
-  console.log(reply);
 
   reply.save();
 });
