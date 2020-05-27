@@ -17,9 +17,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Get one user
-// router.get("/:id", (req, res) => {});
-
 // Register User
 const BCRYPT_SALT_ROUNDS = 12;
 router.post("/register", req => {
@@ -35,6 +32,7 @@ router.post("/register", req => {
         email: email,
         username: username,
         pwd: hashedPwd,
+        avatar: "",
         regDate: regDate
       });
       return user;

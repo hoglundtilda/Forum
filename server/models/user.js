@@ -16,12 +16,17 @@ const usersSchema = new mongoose.Schema({
   regDate: {
     type: String,
     required: true
-  } /* ,
+  },
+  avatar: {
+    type: String,
+    required: false
+  },
   role: {
     type: String,
     required: true,
     default: "user"
-  } */
+  },
+
 });
 
 module.exports = mongoose.model("User", usersSchema);
