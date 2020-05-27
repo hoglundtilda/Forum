@@ -2,10 +2,10 @@
 
 ## Project setup
 
-- npm install
+-- npm install
 
-- cd src
-npm run build
+-- cd src
+--npm run build
 
-- cd server
-nodemon server.js ... or whatever floats your boat
+-- cd server
+--nodemon server.js ... or whatever floats your boat
