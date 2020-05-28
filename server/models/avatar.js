@@ -1,14 +1,14 @@
-/* const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-const avatarSchema = new mongoose.Schema({
-  image: {
-    type: String,
-    required: true
+var GridfsSchema = new mongoose.Schema(
+  {
+    filename: String,
   },
-  user_id: {
-    type: String,
-    required: true
-  }
-});
+  { strict: false }
+);
 
-module.exports = mongoose.model("Avatar", avatarSchema); */
+module.exports = mongoose.model(
+  "GridFs",
+  GridfsSchema,
+  "uploaded_images.files"
+);

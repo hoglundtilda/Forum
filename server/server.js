@@ -1,14 +1,14 @@
 require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const users = require("./routes/users");
-const login = require("./routes/login");
-const admin = require("./routes/admin");
-const categories = require("./routes/categories");
-const topics = require("./routes/topics");
-const upload = require("./routes/upload")
-
-const app = express();
+const express = require("express"),
+  mongoose = require("mongoose"),
+  users = require("./routes/users"),
+  login = require("./routes/login"),
+  admin = require("./routes/admin"),
+  categories = require("./routes/categories"),
+  topics = require("./routes/topics"),
+  upload = require("./routes/upload"),
+  getImages = require("./routes/getImages"),
+  app = express();
 
 app.use(express.json());
 app.use(express.static("../dist"));
@@ -18,14 +18,16 @@ app.use("/auth", login);
 app.use("/admin", admin);
 app.use("/categories", categories);
 app.use("/topics", topics);
-app.use("/upload", upload)
+app.use("/upload", upload);
+app.use("/images", getImages);
 
-mongoose.connect(
+mongoose
+  .connect(
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@mycluster-hrjhr.azure.mongodb.net/forum?authSource=admin&replicaSet=myCluster-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true`,
     {
       useNewUrlParser: true,
       useCreateIndex: true,
-      useFindAndModify: false
+      useFindAndModify: false,
     }
   )
   .then(() => {

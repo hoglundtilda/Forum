@@ -2,7 +2,7 @@
   <div class="profile">
     <div class="avatar">
       <img
-        src="https://www.ixxiyourworld.com/media/2393403/ixxi-lila-and-lola-rabbit-print315_lilaxlola_papersize.jpg?mode=crop&width=130&height=130"
+        :src="`/images/${user.avatar}`"
         alt
       />
     </div>
@@ -19,19 +19,21 @@
     </section>
     <section class="file-upload">
       <p>Change Avatar</p>
-      <form class="form-upload" action="/upload" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-          <input
-            @change="avatarUpload"
-            ref="file"
-            type="file"
-            name="file"
-            id="input-files"
-            class="choose-file"
-          />
-        </div>
-        <button @click="sendFile()" type="submit" class="save-btn btn">Save</button>
-      </form>
+
+      <div class="form-group">
+        <input
+          @change="avatarUpload"
+          ref="file"
+          type="file"
+          name="file"
+          id="input-files"
+          class="choose-file"
+          single
+        />
+      </div>
+      <button @click="sendFile" type="submit" class="save-btn btn">
+        Save
+      </button>
     </section>
   </div>
 </template>
@@ -40,35 +42,28 @@
 export default {
   data: () => {
     return {
-      file: ""
+      file: "",
     };
   },
   computed: {
     user() {
       return JSON.parse(localStorage.getItem("user"));
-    }
+    },
   },
   methods: {
     avatarUpload() {
       this.file = this.$refs.file.files[0];
+      console.log(this.file);
     },
-    sendFile() {
+    async sendFile() {
       let formData = new FormData();
-      formData.append("file", this.file);
-      axios
-        .post("http://localhost:3005/upload/avatar", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data"
-          }
-        })
-        .then(() => {
-          console.log("SUCCESS!!");
-        })
-        .catch(() => {
-          console.log("FAILURE!!");
-        });
-    }
-  }
+      const user_id = localStorage.getItem("user_id");
+
+      formData.append("avatarImage", this.file);
+      formData.append("user_id", user_id)
+      this.$store.dispatch("uploadAvatar", formData)
+    },
+  },
 };
 </script>
 

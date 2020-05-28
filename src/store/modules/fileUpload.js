@@ -2,12 +2,13 @@ const fileUpload = {
   state: {},
   mutations: {},
   actions: {
-    async uploadAvatar(ctx, file) {
+    async uploadAvatar(ctx, formData) {
+      const user_id = localStorage.getItem("user_id");
+//const body = {user_id: user_id, avatarImage: formData}
       const url = "http://localhost:3005/upload/avatar";
       fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        formData: { file: file },
+        body: formData
       })
         .then((response) => response.json())
         .then((data) => {
