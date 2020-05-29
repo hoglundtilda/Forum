@@ -1,5 +1,5 @@
 <template>
-  <div class="side-menu">
+<!--   <div class="side-menu">
     <h3>Admin</h3>
 
   </div>
@@ -21,5 +21,5 @@
     padding: 5px 0;
     color: $grey;
   }
-}
+} -->
 </style>
