@@ -6,9 +6,8 @@
       </div>
       <nav class="nav">
         <ul>
-          <li>Hot Topics</li>
-          <li>New Topics</li>
-          <li>Rules</li>
+          <li>Hot Topics (NA)</li>
+          <li>New Topics (NA)</li>
           <li @click="goToAdmin">ADMIN</li>
         </ul>
       </nav>
