@@ -2,7 +2,7 @@
   <div class="wrapper">
     <header class="header">
       <div class="title">
-        <h1 @click="goToHomepage">GeekStorm</h1>
+        <h1 @click="goToHomepage">Forumet</h1>
       </div>
       <nav class="nav">
         <ul>
@@ -21,7 +21,7 @@
         <button class="user-menu profile" @click="goToProfile">
           <i class="fas fa-user-circle"></i>
         </button>
-        <p class="username" @click="goToProfile">{{user.username}}</p>
+        <p class="username" @click="goToProfile">{{ user.username }}</p>
       </section>
     </header>
   </div>
@@ -31,26 +31,35 @@
 export default {
   computed: {
     user() {
-      const user = JSON.parse(localStorage.getItem("user"))
-      console.log(user)
-      return user
-    }
+      const user = JSON.parse(localStorage.getItem("user"));
+      console.log(user);
+      return user;
+    },
   },
   methods: {
     goToHomepage() {
-      this.$router.push("/home");
+      if (this.$route.path !== "/home") {
+        this.$router.push("/home");
+      }
     },
     goToAdmin() {
-      this.$router.push("/Admin");
+      if (this.$route.path !== "/admin") {
+        this.$router.push("/admin");
+      }
     },
     goToProfile() {
-      this.$store.state.display.discussion = false;
-      this.$store.state.display.profile = true;
-    }
-  }
+      if (this.$route.path !== "/home") {
+        this.$router.push("/home");
+        this.$store.state.display.discussion = false;
+        this.$store.state.display.profile = true;
+      } else {
+        this.$store.state.display.discussion = false;
+        this.$store.state.display.profile = true;
+      }
+    },
+  },
 };
 </script>
-
 
 <style lang="scss" scoped>
 @import "../assets/scss/textStyles";
@@ -106,7 +115,7 @@ export default {
 
       .user-menu {
         margin: 0 0.5rem;
-        display:flex;
+        display: flex;
         align-self: center;
 
         i {
@@ -125,6 +134,5 @@ export default {
       }
     }
   }
-  
 }
 </style>
