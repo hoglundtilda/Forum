@@ -1,18 +1,16 @@
-import store from "..";
-
 const topicReplies = {
   state: { topic: {}, replies: {} },
   mutations: {
     topic(state, data) {
       state.topic = data;
-      store.state.display.showTopic = true;
+      this.state.display.showTopic = true;
     },
     replies(state, data) {
       state.replies = data;
     },
     replyPosted(state, data) {
-      store.display.postReply = false;
-      store.display.showTopic = true;
+      this.state.display.postReply = false;
+      this.state.display.showTopic = true;
     },
   },
   actions: {

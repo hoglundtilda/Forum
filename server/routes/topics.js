@@ -12,7 +12,7 @@ userSchema = db.userSchema;
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-router.post("/postTopic", async (req) => {
+router.post("/postTopic", async (req, res) => {
   const user_id = req.body.user_id,
   category_id = req.body.category_id,
   title = req.body.title,
@@ -34,6 +34,7 @@ router.post("/postTopic", async (req) => {
   });
 
   topic.save();
+  res.send(topic);
 });
 
 router.post("/postReply", async (req, res) => {

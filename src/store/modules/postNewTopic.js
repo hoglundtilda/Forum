@@ -1,5 +1,3 @@
-import store from "..";
-
 const postNewTopic = {
   state: {},
   mutations: {
@@ -7,8 +5,8 @@ const postNewTopic = {
       state.category = {};
     },
    topicPosted(state, data) {
-      store.display.postTopic = false;
-      store.display.showTopic = true;
+      this.state.display.postTopic = false;
+      this.state.display.showTopic = true;
     },
   },
   actions: {
