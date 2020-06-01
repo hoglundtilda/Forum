@@ -15,33 +15,48 @@ const routes = [
   {
     path: "/home",
     name: "Home",
-    meta: { requiresAuth: true },
-    component: Home
+    //meta: { requiresAuth: true },
+    component: Home,
+    beforeEnter: (to, from, next) => {
+      if (localStorage.getItem("user_id")) {
+        next();
+      } else {
+        next('/');
+      }
+    }
   },
   {
     path: "/admin",
     name: "Admin",
-    meta: { requiresAuth: true },
-    component: Admin
+    //meta: { requiresAuth: true },
+    component: Admin,
+   /*  beforeEnter: (to, from, next) => {
+      if (localStorage.getItem("user_id")) {
+        next();
+      } else {
+        next('/');
+      }
+    } */
   }
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  mode: "hash",
   base: process.env.BASE_URL,
   routes
 });
 
-router.beforeEach((to, from, next) => {
+/* router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     if (localStorage.getItem("user_id")) {
       next();
+
     } else {
-      next({ name: "login" });
+      next({ name: "Start" });
     }
   } else {
     next();
   }
-});
+}); */
 
 export default router;

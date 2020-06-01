@@ -1,14 +1,16 @@
-import store from "..";
-
 const topicReplies = {
   state: { topic: {}, replies: {} },
   mutations: {
     topic(state, data) {
       state.topic = data;
-      store.state.display.showTopic = true;
+      this.state.display.showTopic = true;
     },
     replies(state, data) {
       state.replies = data;
+    },
+    replyPosted(state, data) {
+      this.state.display.postReply = false;
+      this.state.display.showTopic = true;
     },
   },
   actions: {
@@ -47,6 +49,7 @@ const topicReplies = {
         });
     },
     async postReply(ctx, post) {
+      console.log("here");
       const url = "http://localhost:3005/topics/postReply";
       fetch(url, {
         method: "POST",
@@ -54,9 +57,11 @@ const topicReplies = {
         body: JSON.stringify(post),
       })
         .then((response) => response.json())
-        .then(() => {
-          store.state.display.postReply = false;
-          store.state.display.showTopic = true;
+        .then((data) => {
+          console.log(data);
+          if (data) {
+            ctx.commit("replyPosted")
+          }
         })
         .catch((error) => {
           console.error("Error:", error);

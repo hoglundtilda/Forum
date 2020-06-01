@@ -4,6 +4,10 @@ const postNewTopic = {
     clearState(state) {
       state.category = {};
     },
+   topicPosted(state, data) {
+      this.state.display.postTopic = false;
+      this.state.display.showTopic = true;
+    },
   },
   actions: {
     async postNewTopic(ctx, post) {
@@ -16,9 +20,8 @@ const postNewTopic = {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           if (data) {
-            console.log(data);
+           ctx.commit("topicPosted")
           }
         })
         .catch((error) => {
