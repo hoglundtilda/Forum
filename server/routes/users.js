@@ -1,8 +1,8 @@
-const express = require("express");
-const User = require("../models/user");
-const bodyParser = require("body-parser");
-const bcrypt = require("bcrypt");
-const router = express.Router();
+const express = require("express"),
+User = require("../models/user"),
+bodyParser = require("body-parser"),
+bcrypt = require("bcrypt"),
+router = express.Router();
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -20,10 +20,10 @@ router.get("/", async (req, res) => {
 // Register User
 const BCRYPT_SALT_ROUNDS = 12;
 router.post("/register", req => {
-  const email = req.body.email;
-  const username = req.body.username;
-  const pwd = req.body.pwd;
-  const regDate = req.body.regDate;
+  const email = req.body.email,
+  username = req.body.username,
+  pwd = req.body.pwd,
+  regDate = req.body.regDate;
 
   bcrypt
     .hash(pwd, BCRYPT_SALT_ROUNDS)

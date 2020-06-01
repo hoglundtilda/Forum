@@ -10,8 +10,10 @@ const express = require("express"),
   getImages = require("./routes/getImages"),
   app = express();
 
+
 app.use(express.json());
 app.use(express.static("../dist"));
+app.use(express.static("../uploads"));
 
 app.use("/users", users);
 app.use("/auth", login);
@@ -19,7 +21,6 @@ app.use("/admin", admin);
 app.use("/categories", categories);
 app.use("/topics", topics);
 app.use("/upload", upload);
-app.use("/images", getImages);
 
 mongoose
   .connect(

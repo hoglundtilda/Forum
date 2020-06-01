@@ -1,15 +1,14 @@
 //import config from "../config/db.js";
-const express = require("express");
-const bodyParser = require("body-parser");
-const bcrypt = require("bcrypt");
-const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
-const randtoken = require("rand-token");
-const auth = require("../middleware/auth");
-
-const router = express.Router();
-const db = mongoose.connection;
-const userSchema = db.usersSchema;
+const express = require("express"),
+bodyParser = require("body-parser"),
+bcrypt = require("bcrypt"),
+mongoose = require("mongoose"),
+jwt = require("jsonwebtoken"),
+randtoken = require("rand-token"),
+auth = require("../middleware/auth"),
+router = express.Router(),
+db = mongoose.connection,
+userSchema = db.usersSchema;
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -43,8 +42,8 @@ router.post("/login", (req, res) => {
         });
       }
     })
-    .catch(error => {
-      console.log("Error authenticating user: ", error);
+    .catch(err => {
+      console.log("Error authenticating user: ", err);
     });
 });
 

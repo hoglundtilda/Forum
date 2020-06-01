@@ -2,7 +2,7 @@
   <div class="profile">
     <div class="avatar">
       <img
-        :src="`/images/${user.avatar}`"
+        :src="`${user.avatar}`"
         alt
       />
     </div>
@@ -146,6 +146,7 @@ export default {
       padding: 6px 10px;
       margin: 1rem 0;
       font-size: 0.8rem;
+      align-self: flex-start;
     }
   }
 }

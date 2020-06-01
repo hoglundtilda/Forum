@@ -1,12 +1,11 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const Category = require("../models/category");
-
-const router = express.Router();
-const db = mongoose.connection;
-const categorySchema = db.usersSchema;
-const topicSchema = db.topicSchema;
+const express = require("express"),
+bodyParser = require("body-parser"),
+mongoose = require("mongoose"),
+Category = require("../models/category"),
+router = express.Router(),
+db = mongoose.connection,
+categorySchema = db.usersSchema,
+topicSchema = db.topicSchema;
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));

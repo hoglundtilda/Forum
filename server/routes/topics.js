@@ -1,24 +1,23 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const Topic = require("../models/topic");
-const Reply = require("../models/topic_reply");
-
-const router = express.Router();
-const db = mongoose.connection;
-const topicSchema = db.topicSchema;
-const topic_replySchema = db.topic_replySchema;
-const userSchema = db.userSchema;
+const express = require("express"),
+bodyParser = require("body-parser"),
+mongoose = require("mongoose"),
+Topic = require("../models/topic"),
+Reply = require("../models/topic_reply"),
+router = express.Router(),
+db = mongoose.connection,
+topicSchema = db.topicSchema,
+topic_replySchema = db.topic_replySchema,
+userSchema = db.userSchema;
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.post("/postTopic", async (req) => {
-  const user_id = req.body.user_id;
-  const category_id = req.body.category_id;
-  const title = req.body.title;
-  const description = req.body.description;
-  const date = new Date();
+  const user_id = req.body.user_id,
+  category_id = req.body.category_id,
+  title = req.body.title,
+  description = req.body.description,
+  date = new Date();
 
   const user = await mongoose
     .model("User", userSchema)
