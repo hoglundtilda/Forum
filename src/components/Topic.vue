@@ -1,7 +1,7 @@
 <template>
   <div class="topic">
     <section class="header">
-      <h4 class="title">{{topic.title}}</h4>
+      <h4 class="title">{{ topic.title }}</h4>
       <div @click="postReply" class="post-reply">
         <h3>Reply</h3>
         <i class="fas fa-plus"></i>
@@ -11,14 +11,14 @@
     <div class="topic_replies">
       <span class="divider-reply"></span>
       <section class="content">
-        <p class="reply">{{topic.description}}</p>
+        <p class="reply">{{ topic.description }}</p>
         <div class="details">
           <div class="user">
-            <p class="username">{{topic.username}}</p>
+            <p class="username">{{ topic.username }}</p>
 
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <aside class="created">{{topic.created_at}}</aside>
+<!--             <div class="imageContainer"><img :src="`${topic.user.avatar}`" alt=""></div>
+ -->          </div>
+          <aside class="created">{{ topic.created_at }}</aside>
         </div>
       </section>
     </div>
@@ -33,15 +33,16 @@ export default {
   computed: {
     topic() {
       return this.$store.state.topicReplies.topic;
-    }
+    },
   },
   methods: {
     postReply() {
       this.$store.state.display.showCategory = false;
       this.$store.state.display.showTopic = false;
+      this.$store.state.display.postTopic = false;
       this.$store.state.display.postReply = true;
-    }
-  }
+    },
+  },
 };
 </script>
 

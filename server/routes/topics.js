@@ -36,7 +36,7 @@ router.post("/postTopic", async (req) => {
   topic.save();
 });
 
-router.post("/postReply", async (req) => {
+router.post("/postReply", async (req, res) => {
   const user_id = req.body.user_id;
   const topic_id = req.body.topic_id;
   const content = req.body.content;
@@ -55,6 +55,7 @@ router.post("/postReply", async (req) => {
   });
 
   reply.save();
+  res.send(reply);
 });
 
 router.get("/getTopic", async (req, res) => {

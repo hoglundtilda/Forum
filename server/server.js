@@ -7,7 +7,6 @@ const express = require("express"),
   categories = require("./routes/categories"),
   topics = require("./routes/topics"),
   upload = require("./routes/upload"),
-  getImages = require("./routes/getImages"),
   app = express();
 
 

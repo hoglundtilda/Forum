@@ -10,6 +10,10 @@ const topicReplies = {
     replies(state, data) {
       state.replies = data;
     },
+    replyPosted(state, data) {
+      store.display.postReply = false;
+      store.display.showTopic = true;
+    },
   },
   actions: {
     async getTopic(ctx, id) {
@@ -47,6 +51,7 @@ const topicReplies = {
         });
     },
     async postReply(ctx, post) {
+      console.log("here");
       const url = "http://localhost:3005/topics/postReply";
       fetch(url, {
         method: "POST",
@@ -54,9 +59,11 @@ const topicReplies = {
         body: JSON.stringify(post),
       })
         .then((response) => response.json())
-        .then(() => {
-          store.state.display.postReply = false;
-          store.state.display.showTopic = true;
+        .then((data) => {
+          console.log(data);
+          if (data) {
+            ctx.commit("replyPosted")
+          }
         })
         .catch((error) => {
           console.error("Error:", error);

@@ -1,8 +1,14 @@
+import store from "..";
+
 const postNewTopic = {
   state: {},
   mutations: {
     clearState(state) {
       state.category = {};
+    },
+   topicPosted(state, data) {
+      store.display.postTopic = false;
+      store.display.showTopic = true;
     },
   },
   actions: {
@@ -16,9 +22,8 @@ const postNewTopic = {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           if (data) {
-            console.log(data);
+           ctx.commit("topicPosted")
           }
         })
         .catch((error) => {
